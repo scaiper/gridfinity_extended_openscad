@@ -156,34 +156,34 @@ module PositionCellCornerConnector(left, right, front, back){
   if(left || right || front || back)
   {
     if(left && front) {
-      if($allowConnectors[iAllowConnectorsLeft] && $allowConnectors[iAllowConnectorsFront])
+      if($allowConnectors[iAllowConnectorsLeft] && $allowConnectors[iAllowConnectorsFront] && !($isLeft && $isFwd))
         let($corner = true)
         rotate([0,0,90])
         children();
 
       let($corner = false){
-        if($allowConnectors[iAllowConnectorsFront])
+        if($allowConnectors[iAllowConnectorsFront] && !$isFwd)
         translate([env_pitch().x,0,0])
         rotate([0,0,90])
         children();
         
-        if($allowConnectors[iAllowConnectorsLeft])
+        if($allowConnectors[iAllowConnectorsLeft] && !$isLeft)
         translate([0,env_pitch().y,0])
         children();
       }
     }
 
     if(left && back) {
-      if($allowConnectors[iAllowConnectorsLeft] && $allowConnectors[iAllowConnectorsBack])
+      if($allowConnectors[iAllowConnectorsLeft] && $allowConnectors[iAllowConnectorsBack] && !($isLeft && $isBack))
         let($corner = true)
         translate([0,env_pitch().y,0])
         children();
 
       let($corner = false) {
-        if($allowConnectors[iAllowConnectorsLeft])
+        if($allowConnectors[iAllowConnectorsLeft] && !$isLeft)
         children();
         
-        if($allowConnectors[iAllowConnectorsBack])
+        if($allowConnectors[iAllowConnectorsBack] && !$isBack)
         translate([env_pitch().x,env_pitch().y,0])
         rotate([0,0,270])
         children();
@@ -191,18 +191,18 @@ module PositionCellCornerConnector(left, right, front, back){
     }
 
     if(right && front){
-      if($allowConnectors[iAllowConnectorsRight] && $allowConnectors[iAllowConnectorsFront])
+      if($allowConnectors[iAllowConnectorsRight] && $allowConnectors[iAllowConnectorsFront] && !($isRight && $isFwd))
         let($corner = true)
         translate([env_pitch().x,0,0])
         rotate([0,0,180])
         children();
 
       let($corner = false) {
-        if($allowConnectors[iAllowConnectorsFront])
+        if($allowConnectors[iAllowConnectorsFront] && !$isFwd)
         rotate([0,0,90])
         children();
         
-        if($allowConnectors[iAllowConnectorsRight])
+        if($allowConnectors[iAllowConnectorsRight] && !$isRight)
         translate([env_pitch().x,env_pitch().y,0])
         rotate([0,0,180])
         children();
@@ -210,44 +210,44 @@ module PositionCellCornerConnector(left, right, front, back){
     }
 
     if(right && back){
-      if($allowConnectors[iAllowConnectorsRight] && $allowConnectors[iAllowConnectorsBack])
+      if($allowConnectors[iAllowConnectorsRight] && $allowConnectors[iAllowConnectorsBack] && !($isRight && $isBack))
         let($corner = true)
         translate([env_pitch().x,env_pitch().y,0])
         rotate([0,0,270])
         children();
 
       let($corner = false) {
-        if($allowConnectors[iAllowConnectorsRight])
+        if($allowConnectors[iAllowConnectorsRight] && !$isRight)
         translate([env_pitch().x,0,0])
         rotate([0,0,180])
         children();
 
-        if($allowConnectors[iAllowConnectorsBack])
+        if($allowConnectors[iAllowConnectorsBack] && !$isBack)
         translate([0,env_pitch().y,0])
         rotate([0,0,270])
         children();
       }
     }
 
-    if(left && !back && !front && !front && $gci.y<=$gc_count.y-3 && $allowConnectors[iAllowConnectorsLeft]){
+    if(left && !back && !front && !front && $gci.y<=$gc_count.y-3 && $allowConnectors[iAllowConnectorsLeft] && !$isLeft){
       $corner = false;
       translate([0,env_pitch().y,0])
       children();
     }
-    if(front && !left && !right && $gci.x<=$gc_count.x-3 && $allowConnectors[iAllowConnectorsFront]){
+    if(front && !left && !right && $gci.x<=$gc_count.x-3 && $allowConnectors[iAllowConnectorsFront] && !$isFwd){
       $corner = false;
       translate([env_pitch().x,0,0])
       rotate([0,0,90])
       children();
     }
-    if(right && !back && !front && $gci.y<=$gc_count.y-3 && $allowConnectors[iAllowConnectorsRight]){
+    if(right && !back && !front && $gci.y<=$gc_count.y-3 && $allowConnectors[iAllowConnectorsRight] && !$isRight){
       $corner = false;
       translate([env_pitch().x,env_pitch().y,0])
       rotate([0,0,180])
       children();
     }
 
-    if(back && !left && !right && $gci.x<=$gc_count.x-3 && $allowConnectors[iAllowConnectorsBack]){
+    if(back && !left && !right && $gci.x<=$gc_count.x-3 && $allowConnectors[iAllowConnectorsBack] && !$isBack){
       $corner = false;
       translate([env_pitch().x,env_pitch().y,0])
       rotate([0,0,270])

@@ -57,7 +57,7 @@ module frame_plain(
     reducedWallHeight = -1,
     roundedCorners = 15,
     reduceWallTaper = false) {
-  frameLipHeight = extra_down > 0 ? height -0.6 : height;
+  frameLipHeight = extra_down > 0 ? height : height;
   frameWallReduction = reducedWallHeight > 0 ? max(0, frameLipHeight-reducedWallHeight) : 0;
 
   centerGridPosition = [
