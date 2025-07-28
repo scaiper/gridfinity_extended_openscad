@@ -312,7 +312,7 @@ module labelSockets(
         labelSocketSize=labelSize, 
         label_num_x=label_num_x);
 
-      translate([labelLeftPosition-0.4,labelPoints[0][0]+0.4,extraHeightToCleanLip])
+      translate([labelLeftPosition-0.4,labelPoints[0][0]+1,extraHeightToCleanLip])
       label_cullenect_socket(labelSize=labelSize);
     } 
     else if(label_style == LabelStyle_pred){
