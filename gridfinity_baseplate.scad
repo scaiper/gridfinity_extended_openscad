@@ -132,7 +132,7 @@ function split_dimention(gf_size, gf_outer_size, plate_size, position_fill_grid,
     avgSize = platesRemaining > 1 && average_plate_sizes ? gf_size/platesRemaining : plate_size,
     avgOuter = platesRemaining > 1 && average_plate_sizes ? outerSize/platesRemaining : plate_size,
     size1 = outerSize <= plate_size ? gf_size : gridPrefix + floor(avgSize-max(outerPrefix,gridPrefix)),
-    outer1 = outerSize <= plate_size ? outerSize : max(outerPrefix,gridPrefix) + floor(avgOuter-max(outerPrefix,gridPrefix)),
+    outer1 = outerSize <= plate_size ? outerSize : max(outerPrefix,gridPrefix) + floor(avgSize-max(outerPrefix,gridPrefix)),
     remSize = max(0, gf_size - size1),
     remOuter = max(0, outerSize - max(outer1, size1)))
   //echo("split_dimention", gf_size=gf_size, plate_size=plate_size, platesRemaining=platesRemaining, avgSize=avgSize, gridPrefix=gridPrefix, size1=size1, remSize=remSize)
