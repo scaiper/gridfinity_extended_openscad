@@ -301,6 +301,11 @@ else
       connectorButterflyTolerance = Connector_Butterfly_Tolerance,
       connectorFilamentEnabled=Connector_Filament_Enabled,
       connectorFilamentDiameter=Connector_Filament_Diameter,
-      connectorFilamentLength=Connector_Filament_Length);
+      connectorFilamentLength=Connector_Filament_Length,
+      $isLeft=(ix == 0),
+      $isFwd=(iy == 0),
+      $isRight=(ix == len(listy)-1),
+      $isBack=(iy == len(plate_list)-1)
+    );
   }
 }
